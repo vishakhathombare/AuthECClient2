@@ -1,0 +1,44 @@
+
+
+<div class="mb-4">
+  <h2 class="text-success">
+    Sign in
+  </h2>
+  <div>
+    Don't have an account?
+    <a routerLink="/signup" class="text-decoration-none fw-medium text-success d-inline-block">
+      Sign up
+    </a>
+  </div>
+</div>
+
+
+<div *ngIf="message" [ngClass]="messageType" class="login-message">
+  {{ message }}
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <input
+      class="form-control bg-body-secondary"
+      placeholder="Email"
+      formControlName="email"
+      type="email"
+    />
+  </div>
+
+  <div class="mb-3">
+    <input
+      class="form-control bg-body-secondary"
+      placeholder="Password"
+      type="password"
+      formControlName="password"
+    />
+  </div>
+
+  <div class="mt-4">
+    <button type="submit" class="btn btn-success w-100 rounded-3">
+      Sign in
+    </button>
+  </div>
+</form>

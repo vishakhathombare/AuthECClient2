@@ -1,0 +1,87 @@
+<div class="mb-4">
+    <h2 class="text success">
+  Sign up
+    </h2>
+    <div> Already have an account?
+        <a routerLink="/signin" class="text-decoration-none fw-medium text-success d-inline-block">
+        Sign in
+        </a>
+    </div>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  
+  <div class="mb-3">
+    <input
+      class="form-control bg-body-secondary"
+      placeholder="Full Name"
+      formControlName="fullName"
+    />
+    @if (hasDisplayableError('fullName') && form.controls['fullName'].hasError('required')) {
+      <div class="error-feedback">
+        Please enter your full name.
+      </div>
+    }
+  </div>
+
+  
+  <div class="mb-3">
+    <input
+      class="form-control bg-body-secondary"
+      placeholder="Email"
+      formControlName="email"
+    />
+
+    @if (hasDisplayableError('email')) {
+      <div class="error-feedback">
+        @if (form.controls['email'].hasError('required')) {
+          <div>Please enter your email.</div>
+        }
+
+        @if (form.controls['email'].hasError('email')) {
+          <div>Please enter a valid email.</div>
+        }
+      </div>
+    }
+  </div>
+
+  
+  <div class="mb-3">
+    <input
+      class="form-control bg-body-secondary"
+      placeholder="Password"
+      formControlName="password"
+    />
+
+    @if (hasDisplayableError('password')) {
+      <div class="error-feedback">
+        @if (form.controls['password'].hasError('required')) {
+          <div>Please enter your password.</div>
+        }
+
+        @if (form.controls['password'].hasError('minlength')) {
+          <div>At least 6 characters required.</div>
+        }
+
+        @if (form.controls['password'].hasError('pattern')) {
+          <div>Password must contain at least one special character.</div>
+        }
+      </div>
+    }
+  </div>
+
+  
+  <div class="mb-3">
+    <input
+      class="form-control bg-body-secondary"
+      placeholder="Confirm Password"
+      formControlName="confirmPassword"
+    />
+  </div>
+
+  <div class="mt-4">
+    <button type="submit" class="btn btn-success w-100 rounded-3">
+      Register
+    </button>
+  </div>
+</form>
